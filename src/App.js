@@ -1,15 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router-dom/cjs/react-router-dom';
-import * as api from './services/api';
 import './App.css';
 import Home from './components/Home';
+import ShoppingCart from './components/ShoppingCart';
 
 function App() {
-  api.getCategories().then((categories) => { console.log(categories); });
-
   return (
     <div>
-      <Route path="/" component={ Home } />
+      <Route exact path="/" component={ Home } />
+      <Route exact path="/shopping-cart" component={ ShoppingCart } />
     </div>
   );
 }
