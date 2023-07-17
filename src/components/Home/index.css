@@ -32,3 +32,25 @@
     border-radius: 20px 0 0 20px;
     width: 40%;
 }
+
+.categories-list {
+  width: 20%;
+}
+
+.categories-items {
+  list-style: none;
+}
+
+.categories-btn {
+  border: none;
+  padding: 15px 25px;
+  margin-bottom: 15px;
+  background-color: white;
+  width: 70%;
+  height: 30%;
+  border-radius: 10px;
+}
+
+.categories-btn:hover {
+  background-color: rgba(128, 128, 128, 0.356);
+}

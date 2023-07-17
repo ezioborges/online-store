@@ -45,13 +45,17 @@ export default class Home extends React.Component {
           <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
         </div>
         <div className="line" />
-        <ul>
+        <ul className="categories-list">
           {
             allCategories.map((categories, index) => (
-              <li key={ index }>
+              <li
+                key={ index }
+                className="categories-items"
+              >
                 <button
                   type="button"
                   data-testid="category"
+                  className="categories-btn"
                 >
                   { categories.name }
                 </button>
