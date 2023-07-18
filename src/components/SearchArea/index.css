@@ -1,0 +1,50 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-area {
+  position: relative;
+  left: 130px;
+  margin-left: 400px;
+  padding: 0 2px 28px 25px;
+  width: 100%;
+}
+
+.search-btn {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 0 20px 20px 0;
+  width: 10%;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+
+.search-btn:hover {
+  background-color: gainsboro;
+}
+  
+.search-input {
+  border-radius: 20px 0 0 20px;
+  width: 40%;
+}
+
+.shopping-cart-btn {
+  border: none;
+  position: absolute;
+  right: 58px;
+  font-size: x-large;
+  padding: 15px 25px;
+  margin-right: 40px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+  
+.shopping-cart-btn:hover {
+  background-color: rgba(128, 128, 128, 0.356);
+}

@@ -4,6 +4,8 @@ import * as api from '../../services/api';
 import SearchArea from '../SearchArea';
 import './index.css';
 import Categories from '../Categories';
+import IsLoagind from '../IsLoading';
+import ProductList from '../ProductList';
 
 export default class Home extends React.Component {
   constructor() {
@@ -11,13 +13,16 @@ export default class Home extends React.Component {
     this.state = {
       query: '',
       products: [],
+      errMessage: 'Nenhum produto foi encontrado',
       validRequest: false,
       allCategories: [],
+      isLoading: false,
     };
   }
 
   componentDidMount() {
     this.getAllCategories();
+    this.productsClick();
   }
 
   handleChange = ({ target }) => {
@@ -32,52 +37,60 @@ export default class Home extends React.Component {
 
   productsClick = async () => {
     const { query } = this.state;
+
+    this.setState({
+      isLoading: true,
+    });
     const productsArray = await api.getProductsByQuery(query);
 
     this.setState({
       validRequest: true,
       products: productsArray.results,
+      isLoading: false,
     });
   };
 
   render() {
     const emptyMessage = 'Digite algum termo de pesquisa ou escolha uma categoria.';
-    const { allCategories, products, query, validRequest } = this.state;
+    const {
+      allCategories,
+      products,
+      query,
+      validRequest,
+      errMessage,
+      isLoading,
+    } = this.state;
     const { history } = this.props;
-    const errMessage = 'Nenhum produto foi encontrado';
     return (
       <div>
+        <div className="empty">
+          <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
+        </div>
+
         <SearchArea
           history={ history }
           productsClick={ this.productsClick }
           products={ products }
           query={ query }
           handleChange={ this.handleChange }
+          isLoading={ isLoading }
         />
 
-        <div className="empty">
-          <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
-        </div>
-
         <div className="line" />
-        <div className="categoriesAndProducts">
-          <Categories allCategories={ allCategories } />
-          <ul>
-            {
-              !validRequest ? errMessage
-                : (products.map(({ title, thumbnail, price }, index) => (
-                  <li
-                    key={ index }
-                    data-testid="product"
-                  >
-                    <img src={ thumbnail } alt={ title } />
-                    <p>{ title }</p>
-                    <p>{ price }</p>
-                  </li>
-                )))
-            }
-          </ul>
-        </div>
+
+        {
+          isLoading ? <IsLoagind errMessage={ errMessage } /> : (
+            <div className="categoriesAndProducts">
+              <Categories allCategories={ allCategories } />
+              <ProductList
+                validRequest={ validRequest }
+                errMessage={ errMessage }
+                isLoading={ isLoading }
+                products={ products }
+              />
+            </div>
+          )
+        }
       </div>
     );
   }

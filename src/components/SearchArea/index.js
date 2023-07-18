@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import './index.css';
 
 export default class SearchArea extends React.Component {
   shoppingCartClick = () => {
@@ -9,14 +10,11 @@ export default class SearchArea extends React.Component {
   };
 
   render() {
-    // const { query, products } = this.state;
     const {
       productsClick,
       query,
-      products,
       handleChange,
     } = this.props;
-    console.log('produtos: ', products);
     return (
       <div className="search">
         <div className="search-area">
