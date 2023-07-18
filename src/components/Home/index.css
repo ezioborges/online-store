@@ -13,15 +13,22 @@
 
 .search {
   display: flex;
+  justify-content: space-between;
+}
+
+.search-area {
+  display: flex;
   justify-content: center;
   padding: 25px;
+  width: 100%;
+  margin-left: 124px;
 }
 
 .search-btn {
    padding: 10px;
    border: none;
    border-radius: 0 20px 20px 0;
-   width: 7%;
+   width: 10%;
 }
 
 .search-btn:hover {
@@ -31,6 +38,11 @@
 .search-input {
     border-radius: 20px 0 0 20px;
     width: 40%;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-between;
 }
 
 .categories-list {
@@ -52,5 +64,23 @@
 }
 
 .categories-btn:hover {
+  background-color: rgba(128, 128, 128, 0.356);
+}
+
+.categoriesAndProducts {
+  display: flex;
+}
+
+.shopping-cart-btn {
+  border: none;
+  font-size: x-large;
+  padding: 15px 25px;
+  margin-right: 40px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.shopping-cart-btn:hover {
   background-color: rgba(128, 128, 128, 0.356);
 }
