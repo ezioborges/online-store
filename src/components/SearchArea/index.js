@@ -14,6 +14,7 @@ export default class SearchArea extends React.Component {
       productsClick,
       query,
       handleChange,
+      handleKeyUp,
     } = this.props;
     return (
       <div className="search">
@@ -25,6 +26,7 @@ export default class SearchArea extends React.Component {
               value={ query }
               name="query"
               onChange={ handleChange }
+              onKeyUp={ handleKeyUp }
             />
           </label>
           <button

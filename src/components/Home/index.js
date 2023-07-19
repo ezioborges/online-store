@@ -50,6 +50,12 @@ export default class Home extends React.Component {
     });
   };
 
+  handleKeyUp = (event) => {
+    if (event.key === 'Enter') {
+      this.productsClick();
+    }
+  };
+
   render() {
     const emptyMessage = 'Digite algum termo de pesquisa ou escolha uma categoria.';
     const {
@@ -74,6 +80,7 @@ export default class Home extends React.Component {
           query={ query }
           handleChange={ this.handleChange }
           isLoading={ isLoading }
+          handleKeyUp={ this.handleKeyUp }
         />
 
         <div className="line" />

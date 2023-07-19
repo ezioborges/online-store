@@ -36,6 +36,7 @@
 .shopping-cart-btn {
   border: none;
   position: absolute;
+  top: 60px;
   right: 58px;
   font-size: x-large;
   padding: 15px 25px;
