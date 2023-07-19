@@ -15,6 +15,7 @@ export default class IsLoagind extends React.Component {
           <div className="dot" />
         </section>
         <h3>{ errMessage }</h3>
+        <h3>Aguarde um momento...</h3>
       </div>
     );
   }

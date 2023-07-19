@@ -19,6 +19,13 @@ export async function getProductsByQuery(query) {
   return productsQuery;
 }
 
+export async function getProductsByCategoryId(categoryId) {
+  const url = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`;
+  const response = await fetch(url);
+  const productsByCategoryId = response.json();
+  return productsByCategoryId;
+}
+
 export async function getProductById() {
   // Esta implementação específica não é avaliada, mas pode ajudar você 🙂
   // Atenção: essa função não deverá ser chamada na tela do carrinho de compras.

@@ -6,6 +6,7 @@ import './index.css';
 import Categories from '../Categories';
 import IsLoagind from '../IsLoading';
 import ProductList from '../ProductList';
+import ProductsByCategoryId from '../ProductsByCategoryId';
 
 export default class Home extends React.Component {
   constructor() {
@@ -13,10 +14,13 @@ export default class Home extends React.Component {
     this.state = {
       query: '',
       products: [],
+      byCategoryId: [],
       errMessage: 'Nenhum produto foi encontrado',
       validRequest: false,
       allCategories: [],
       isLoading: false,
+      categoryidList: false,
+      productsList: false,
     };
   }
 
@@ -47,6 +51,8 @@ export default class Home extends React.Component {
       validRequest: true,
       products: productsArray.results,
       isLoading: false,
+      categoryidList: false,
+      productsList: true,
     });
   };
 
@@ -54,6 +60,22 @@ export default class Home extends React.Component {
     if (event.key === 'Enter') {
       this.productsClick();
     }
+  };
+
+  getProductsByCategoryIdClick = async ({ target }) => {
+    const { allCategories } = this.state;
+    const { id } = target;
+
+    this.setState({ isLoading: true });
+
+    const categoryId = allCategories.find((categoriesId) => categoriesId.id === id);
+    const productsByCategoryId = await api.getProductsByCategoryId(categoryId.id);
+    this.setState({
+      byCategoryId: productsByCategoryId.results,
+      categoryidList: true,
+      productsList: false,
+      isLoading: false,
+    });
   };
 
   render() {
@@ -65,7 +87,11 @@ export default class Home extends React.Component {
       validRequest,
       errMessage,
       isLoading,
+      byCategoryId,
+      categoryidList,
+      productsList,
     } = this.state;
+
     const { history } = this.props;
     return (
       <div>
@@ -88,13 +114,21 @@ export default class Home extends React.Component {
         {
           isLoading ? <IsLoagind errMessage={ errMessage } /> : (
             <div className="categoriesAndProducts">
-              <Categories allCategories={ allCategories } />
-              <ProductList
-                validRequest={ validRequest }
-                errMessage={ errMessage }
-                isLoading={ isLoading }
-                products={ products }
+              <Categories
+                allCategories={ allCategories }
+                getProductsByCategoryIdClick={ this.getProductsByCategoryIdClick }
               />
+              {
+                categoryidList && (<ProductsByCategoryId byCategoryId={ byCategoryId } />)
+              }
+              {
+                productsList && (<ProductList
+                  validRequest={ validRequest }
+                  errMessage={ errMessage }
+                  isLoading={ isLoading }
+                  products={ products }
+                />)
+              }
             </div>
           )
         }
