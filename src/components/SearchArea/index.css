@@ -25,9 +25,14 @@
   width: 500px;
 }
 
+.search-btn {
+  background-color: white;
+}
 
 .search-btn:hover {
-  background-color: gainsboro;
+  background-color: #cd7203;
+  color: white;
+  font-weight: bolder;
 }
 
 .shopping-cart-btn {
@@ -39,10 +44,13 @@
   padding: 15px 25px;
   margin-right: 40px;
   margin-top: 15px;
-  border-radius: 10px;
-  background-color: white;
+  border-radius: 15%;
+  background-color: #FF8C00;
+  font-weight: bolder;
 }
   
 .shopping-cart-btn:hover {
-  background-color: rgba(128, 128, 128, 0.356);
+  background-color: #cd7203;
+  color: white;
+  font-weight: bolder;
 }

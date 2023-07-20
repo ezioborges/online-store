@@ -41,7 +41,9 @@
 }
 
 .details-btn:hover {
-  background-color: rgba(128, 128, 128, 0.612);
+  background-color: #cd7203;
+  color: white;
+  font-weight: bolder;
 }
 
 .btn {

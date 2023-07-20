@@ -14,7 +14,6 @@ export default class Home extends React.Component {
     this.state = {
       query: '',
       products: [],
-      message: 'Nenhum produto foi encontrado',
       validRequest: false,
       allCategories: [],
       isLoading: false,
@@ -78,7 +77,6 @@ export default class Home extends React.Component {
       products,
       query,
       validRequest,
-      message,
       isLoading,
     } = this.state;
 
@@ -101,10 +99,8 @@ export default class Home extends React.Component {
           />
         </div>
 
-        <div className="line" />
-
         {
-          isLoading ? <IsLoagind message={ message } /> : (
+          isLoading ? <IsLoagind /> : (
             <div className="categoriesAndProducts">
               <Categories
                 allCategories={ allCategories }
@@ -112,24 +108,24 @@ export default class Home extends React.Component {
               />
               <ul className="product-list-content">
                 {
-                  !validRequest ? message
-                    : (products.map((singleProduct, index) => (
-                      <li
-                        key={ index }
-                        data-testid="product"
-                        className="product-list-items"
-                      >
-                        <Link
-                          to={ `/product-details/${singleProduct.id}` }
-                          data-testid="product-detail-link"
-                          className="product-detail-link"
-                        >
-                          <ProductList
-                            singleProduct={ singleProduct }
-                          />
-                        </Link>
-                      </li>
-                    )))
+                  validRequest
+                   && (products.map((singleProduct, index) => (
+                     <li
+                       key={ index }
+                       data-testid="product"
+                       className="product-list-items"
+                     >
+                       <Link
+                         to={ `/product-details/${singleProduct.id}` }
+                         data-testid="product-detail-link"
+                         className="product-detail-link"
+                       >
+                         <ProductList
+                           singleProduct={ singleProduct }
+                         />
+                       </Link>
+                     </li>
+                   )))
                 }
               </ul>
             </div>
