@@ -26,6 +26,11 @@ export default class ProductDetails extends Component {
     history.push('/shopping-cart');
   };
 
+  home = () => {
+    const { history } = this.props;
+    history.push('/');
+  };
+
   render() {
     const { productDetails } = this.state;
     const { title, thumbnail, price } = productDetails;
@@ -66,7 +71,14 @@ export default class ProductDetails extends Component {
               onClick={ this.shoppingCart }
               className="details-btn"
             >
-              Carrinho de compras
+              Adicionar ao carrinho de compras
+            </button>
+            <button
+              type="button"
+              onClick={ this.home }
+              className="details-btn"
+            >
+              voltar para tela inicial
             </button>
           </div>
         </div>
