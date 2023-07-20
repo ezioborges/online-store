@@ -1,0 +1,3 @@
+1 - Criar um dialog para a lista de categorias;
+2 - Fazer a paginadasação dos produtos: Pesquisar sobre tabelas paginadas pode ajudar;
+3 - Pensar na necessidade de um footer (pode ser legal pra colocar meus contatos); 
