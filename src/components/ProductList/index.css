@@ -10,20 +10,28 @@
   list-style: none;
   padding: 15px;
   margin-bottom: 10px;
-  width: 20%;
+  width: 25%;
 }
 
 .product-list-items:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.product-img-content {
+  display: flex;
+  justify-content: center;
+}
+
 .product-img {
-  width: 100%;
+  width: 200px;
+  height: 100%;
 }
 
 .product-description-items {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
@@ -33,7 +41,6 @@
 
 .product-title {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 39px;
   overflow: hidden;

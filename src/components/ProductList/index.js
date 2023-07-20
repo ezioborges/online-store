@@ -4,35 +4,27 @@ import './index.css';
 
 export default class ProductList extends Component {
   render() {
-    const {
-      validRequest,
-      errMessage,
-      products,
-    } = this.props;
+    const { singleProduct } = this.props;
     return (
-      <ul className="product-list-content">
-        {
-          !validRequest ? errMessage
-            : (products.map(({ title, thumbnail, price }, index) => (
-              <li
-                key={ index }
-                data-testid="product"
-                className="product-list-items"
-              >
-                <img src={ thumbnail } alt={ title } className="product-img" />
-                <div className="product-description-items">
-                  <p className="product-title">{ title }</p>
-                  <p className="product-price">
-                    {
-                      price
-                        .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
-                    }
-                  </p>
-                </div>
-              </li>
-            )))
-        }
-      </ul>
+      <div>
+        <div className="product-img-content">
+          <img
+            src={ singleProduct.thumbnail }
+            alt={ singleProduct.title }
+            className="product-img"
+          />
+        </div>
+        <div className="product-description-items">
+          <p className="product-title">{ singleProduct.title }</p>
+          <p className="product-price">
+            {
+              singleProduct.price
+                .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+            }
+
+          </p>
+        </div>
+      </div>
     );
   }
 }

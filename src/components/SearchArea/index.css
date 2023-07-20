@@ -4,11 +4,11 @@
 }
 
 .search-area {
-  position: relative;
-  left: 130px;
-  margin-left: 400px;
-  padding: 0 2px 28px 25px;
+  display: flex;
+  justify-content: center;
   width: 100%;
+  margin: auto;
+  align-self: center;
 }
 
 .search-btn {
@@ -21,16 +21,13 @@
 .search-input {
   padding: 10px;
   border: 1px solid black;
+  border-radius: 20px 0 0 20px;
+  width: 500px;
 }
 
 
 .search-btn:hover {
   background-color: gainsboro;
-}
-  
-.search-input {
-  border-radius: 20px 0 0 20px;
-  width: 40%;
 }
 
 .shopping-cart-btn {

@@ -1,6 +1,7 @@
-.empty {
+.empty-message {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .line {
@@ -43,4 +44,15 @@
 .categoriesAndProducts {
   display: flex;
   justify-content: space-around;
+}
+
+.research-field {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.product-detail-link {
+  text-decoration: none;
+  color: black;
 }

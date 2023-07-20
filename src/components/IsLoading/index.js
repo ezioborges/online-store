@@ -4,7 +4,7 @@ import './index.css';
 
 export default class IsLoagind extends React.Component {
   render() {
-    const { errMessage } = this.props;
+    const { message } = this.props;
     return (
       <div className="message">
         <section className="dots-container">
@@ -14,7 +14,7 @@ export default class IsLoagind extends React.Component {
           <div className="dot" />
           <div className="dot" />
         </section>
-        <h3>{ errMessage }</h3>
+        <h3>{ message }</h3>
         <h3>Aguarde um momento...</h3>
       </div>
     );
@@ -22,5 +22,5 @@ export default class IsLoagind extends React.Component {
 }
 
 IsLoagind.propTypes = {
-  errMessage: PropTypes.string,
+  message: PropTypes.string,
 }.isRequired;

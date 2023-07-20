@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import * as api from '../../services/api';
 import SearchArea from '../SearchArea';
 import './index.css';
 import Categories from '../Categories';
 import IsLoagind from '../IsLoading';
 import ProductList from '../ProductList';
-import ProductsByCategoryId from '../ProductsByCategoryId';
 
 export default class Home extends React.Component {
   constructor() {
@@ -14,13 +14,10 @@ export default class Home extends React.Component {
     this.state = {
       query: '',
       products: [],
-      byCategoryId: [],
-      errMessage: 'Nenhum produto foi encontrado',
+      message: 'Nenhum produto foi encontrado',
       validRequest: false,
       allCategories: [],
       isLoading: false,
-      categoryidList: false,
-      productsList: false,
     };
   }
 
@@ -51,8 +48,6 @@ export default class Home extends React.Component {
       validRequest: true,
       products: productsArray.results,
       isLoading: false,
-      categoryidList: false,
-      productsList: true,
     });
   };
 
@@ -71,9 +66,7 @@ export default class Home extends React.Component {
     const categoryId = allCategories.find((categoriesId) => categoriesId.id === id);
     const productsByCategoryId = await api.getProductsByCategoryId(categoryId.id);
     this.setState({
-      byCategoryId: productsByCategoryId.results,
-      categoryidList: true,
-      productsList: false,
+      products: productsByCategoryId.results,
       isLoading: false,
     });
   };
@@ -85,50 +78,60 @@ export default class Home extends React.Component {
       products,
       query,
       validRequest,
-      errMessage,
+      message,
       isLoading,
-      byCategoryId,
-      categoryidList,
-      productsList,
     } = this.state;
 
     const { history } = this.props;
     return (
       <div>
-        <div className="empty">
-          <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
-        </div>
+        <div className="research-field">
+          <div className="empty-message">
+            <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
+          </div>
 
-        <SearchArea
-          history={ history }
-          productsClick={ this.productsClick }
-          products={ products }
-          query={ query }
-          handleChange={ this.handleChange }
-          isLoading={ isLoading }
-          handleKeyUp={ this.handleKeyUp }
-        />
+          <SearchArea
+            history={ history }
+            productsClick={ this.productsClick }
+            products={ products }
+            query={ query }
+            handleChange={ this.handleChange }
+            isLoading={ isLoading }
+            handleKeyUp={ this.handleKeyUp }
+          />
+        </div>
 
         <div className="line" />
 
         {
-          isLoading ? <IsLoagind errMessage={ errMessage } /> : (
+          isLoading ? <IsLoagind message={ message } /> : (
             <div className="categoriesAndProducts">
               <Categories
                 allCategories={ allCategories }
                 getProductsByCategoryIdClick={ this.getProductsByCategoryIdClick }
               />
-              {
-                categoryidList && (<ProductsByCategoryId byCategoryId={ byCategoryId } />)
-              }
-              {
-                productsList && (<ProductList
-                  validRequest={ validRequest }
-                  errMessage={ errMessage }
-                  isLoading={ isLoading }
-                  products={ products }
-                />)
-              }
+              <ul className="product-list-content">
+                {
+                  !validRequest ? message
+                    : (products.map((singleProduct, index) => (
+                      <li
+                        key={ index }
+                        data-testid="product"
+                        className="product-list-items"
+                      >
+                        <Link
+                          to={ `/product-details/${singleProduct.id}` }
+                          data-testid="product-detail-link"
+                          className="product-detail-link"
+                        >
+                          <ProductList
+                            singleProduct={ singleProduct }
+                          />
+                        </Link>
+                      </li>
+                    )))
+                }
+              </ul>
             </div>
           )
         }
