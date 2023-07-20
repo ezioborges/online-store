@@ -1,8 +1,8 @@
 .empty-message {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: white;
+  position: absolute;
+  top: 115px;
+  left: 524px;
+  margin: 20px 0;
 }
 
 .line {
@@ -61,4 +61,8 @@
 .product-detail-link {
   text-decoration: none;
   color: black;
+}
+
+.product-list {
+  display: flex;
 }

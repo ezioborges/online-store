@@ -84,9 +84,6 @@ export default class Home extends React.Component {
     return (
       <div>
         <div className="research-field">
-          <div className="empty-message">
-            <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
-          </div>
 
           <SearchArea
             history={ history }
@@ -106,9 +103,13 @@ export default class Home extends React.Component {
                 allCategories={ allCategories }
                 getProductsByCategoryIdClick={ this.getProductsByCategoryIdClick }
               />
-              <ul className="product-list-content">
-                {
-                  validRequest
+              <div className="product-list-content">
+                <div className="empty-message">
+                  <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
+                </div>
+                <ul className="product-list-content">
+                  {
+                    validRequest
                    && (products.map((singleProduct, index) => (
                      <li
                        key={ index }
@@ -126,8 +127,9 @@ export default class Home extends React.Component {
                        </Link>
                      </li>
                    )))
-                }
-              </ul>
+                  }
+                </ul>
+              </div>
             </div>
           )
         }
