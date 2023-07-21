@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/Home';
 import ShoppingCart from './components/ShoppingCart';
 import ProductDetails from './components/ProductDetails';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
