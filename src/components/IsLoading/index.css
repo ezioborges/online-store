@@ -53,9 +53,6 @@
 
 .message {
   display: flex;
-  position: absolute;
-  top: 400px;
-  left: 727px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
