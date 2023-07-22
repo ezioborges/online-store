@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as api from '../../services/api';
-import './index.css';
-import IsLoagind from '../IsLoading';
-import Header from '../Header';
-import Body from '../Body';
+import * as api from '../services/api';
+import IsLoagind from './IsLoading';
+import Header from './Header';
+import Body from './Body';
 
 export default class Home extends React.Component {
   constructor() {
