@@ -3,8 +3,9 @@ import { Route } from 'react-router-dom/cjs/react-router-dom';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import Main from './components/Main';
 import ShoppingCart from './components/ShoppingCart';
-import ProductDetails from './components/ProductDetails';
+// import ProductDetails from './components/ProductDetails';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductDetailCard from './components/ProductDetailCard';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route
           exact
           path="/product-details/:id"
-          render={ (props) => <ProductDetails { ...props } /> }
+          render={ (props) => <ProductDetailCard { ...props } /> }
         />
       </Switch>
     </div>
