@@ -6,6 +6,7 @@ import { Card, CardGroup, Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import './Style/ProductsCard.css';
 
 export default class ProductsCard extends Component {
   DescriptionProduct = ({ id, children, title }) => (

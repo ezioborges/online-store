@@ -1,0 +1,31 @@
+.element {
+  scrollbar-width: thin;
+  scrollbar-color: black;
+}
+
+.element::-webkit-scrollbar {
+  width: 4px;
+  height: 3px; /* A altura só é vista quando a rolagem é horizontal */
+}
+
+.element::-webkit-scrollbar-track {
+  background: transparent;
+  padding: 2px;
+}
+
+.element::-webkit-scrollbar-thumb {
+  background-color: black;;
+}
+
+.dropdown-box {
+  display: flex;
+  position: inherit;
+  right: -864px;
+  background-color: white;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 80vw;
+  overflow: scroll;
+  height: 70vh;
+}

@@ -13,6 +13,7 @@ import Container from 'react-bootstrap/Container';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import PropTypes from 'prop-types';
+import './Style/Header.css';
 
 export default class NavBar extends Component {
   render() {
@@ -28,7 +29,7 @@ export default class NavBar extends Component {
     return (
       <Container fluid>
         <Row
-          className="py-5 mb-0 bg-dark d-flex justify-content-around"
+          className="py-4 mb-0 bg-dark d-flex justify-content-around"
         >
           <Col
             className={ `d-flex 
@@ -76,8 +77,8 @@ export default class NavBar extends Component {
             </Link>
           </Col>
         </Row>
-        <Row>
-          <Navbar variant="dark" bg="dark" expand="lg">
+        <Row className="mb-4">
+          <Navbar bg="secondary" expand="lg">
             <Container fluid>
               <Navbar.Collapse
                 id="navbar-dark-example"
@@ -86,22 +87,24 @@ export default class NavBar extends Component {
                 <Nav>
                   <NavDropdown
                     id="nav-dropdown-dark-example"
-                    title="Categoties"
-                    menuVariant="secondary"
-                    className="py-2"
+                    title="Categorias"
+                    className="py-2 d-flex justify-content-center"
+                    style={ { fontSize: '1.8em' } }
                   >
-                    {
-                      allCategories.map((category, index) => (
-                        <NavDropdown.Item
-                          style={ { width: '67vw' } } // aqui muda o tamo do DropDown
-                          key={ index }
-                          id={ category.id }
-                          onClick={ getProductsByCategoryIdClick }
-                        >
-                          { category.name }
-                        </NavDropdown.Item>
-                      ))
-                    }
+                    <div className="dropdown-box element">
+                      {
+                        allCategories.map((category, index) => (
+                          <NavDropdown.Item
+                            key={ index }
+                            id={ category.id }
+                            onClick={ getProductsByCategoryIdClick }
+                            className="d-flex justify-content-center py-2"
+                          >
+                            { category.name }
+                          </NavDropdown.Item>
+                        ))
+                      }
+                    </div>
                   </NavDropdown>
                 </Nav>
               </Navbar.Collapse>
