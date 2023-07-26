@@ -2,13 +2,21 @@
 /* eslint-disable react/no-unused-class-component-methods */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Component } from 'react';
-import { Card, CardGroup, Tooltip, OverlayTrigger } from 'react-bootstrap';
+import { Card, CardGroup, Tooltip, OverlayTrigger, Button } from 'react-bootstrap';
 
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+// import { saveProduct } from '../services/shoppingCartApi';
 import './Style/ProductsCard.css';
+import { addProduct } from '../services/shoppingCartApi';
 
 export default class ProductsCard extends Component {
+  saveProductsClick = async (e) => {
+    e.preventDefault();
+    const { singleProduct } = this.props;
+    await addProduct(singleProduct);
+  };
+
   DescriptionProduct = ({ id, children, title }) => (
     <OverlayTrigger
       overlay={
@@ -23,15 +31,14 @@ export default class ProductsCard extends Component {
 
   render() {
     const { singleProduct } = this.props;
-
     return (
       <CardGroup className="d-flex justify-content-center mb-3">
-        <Link
-          to={ `/product-details/${singleProduct.id}` }
-          data-testid="product-detail-link"
-          className="product-detail-link"
-        >
-          <Card>
+        <Card>
+          <Link
+            to={ `/product-details/${singleProduct.id}` }
+            data-testid="product-detail-link"
+            className="product-detail-link"
+          >
             <Card.Img
               variant="top"
               src={ singleProduct.thumbnail }
@@ -59,9 +66,14 @@ export default class ProductsCard extends Component {
 
               </Card.Text>
             </Card.Footer>
-
-          </Card>
-        </Link>
+          </Link>
+          <Button
+            data-testid="product-add-to-cart"
+            onClick={ this.saveProductsClick }
+          >
+            Adicionar ao Carrinho
+          </Button>
+        </Card>
       </CardGroup>
     );
   }

@@ -1,4 +1,2 @@
-1 - Ajustar o DropDown pra ficar visualmente melhor;
-2 - criar uma scroll para a lista de categorias no DropDown; 
-3 - Pensar na necessidade de um footer (pode ser legal pra colocar meus contatos); 
-4 - Melhorar os cards da productList (ainda da pra melhorar mais);
+ - melhorar a disposção dos conteudos no carrinho de compras;
+ - resolver para que quando o carrinho estiver vazio aparecer a frase indicada na page;

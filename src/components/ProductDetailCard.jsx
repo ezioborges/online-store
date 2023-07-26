@@ -59,7 +59,6 @@ export default class ProductDetailCard extends Component {
                   <Button
                     variant="primary"
                     onClick={ this.home }
-                    // className="py-4"
                     style={ { height: '10vh', width: '10vw' } }
                   >
                     voltar para tela inicial
@@ -67,7 +66,6 @@ export default class ProductDetailCard extends Component {
                 </Col>
                 <Col className="d-flex justify-content-center">
                   <Button
-                    // className="py-4"
                     style={ { height: '10vh', width: '10vw' } }
                     onClick={ this.shoppingCart }
                     data-testid="shopping-cart-button"
