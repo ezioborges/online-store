@@ -98,7 +98,7 @@ export default class NavBar extends Component {
                             key={ index }
                             id={ category.id }
                             onClick={ getProductsByCategoryIdClick }
-                            className="d-flex justify-content-center py-2"
+                            className="d-flex justify-content-center py-4 px-4"
                           >
                             { category.name }
                           </NavDropdown.Item>
