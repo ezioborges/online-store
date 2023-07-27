@@ -2,8 +2,9 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import React from 'react';
 import { Button, Col, Container, Row, Table } from 'react-bootstrap';
-import { BsFillTrash3Fill } from 'react-icons/bs';
-import { readGetProducts } from '../services/shoppingCartApi';
+// import { BsFillTrash3Fill } from 'react-icons/bs';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { readGetProducts, removeItem } from '../services/shoppingCartApi';
 
 export default class ShoppingCart extends React.Component {
   constructor() {
@@ -14,14 +15,20 @@ export default class ShoppingCart extends React.Component {
   }
 
   componentDidMount() {
-    this.getItems();
+    this.setItemsInState();
+    // this.removeItemList()
   }
 
-  getItems = async () => {
+  setItemsInState = async () => {
     const items = await readGetProducts();
     this.setState({
       shoppinCartItems: items,
     });
+  };
+
+  removeItemList = async ({ target }) => {
+    await removeItem(target);
+    await this.setItemsInState();
   };
 
   render() {
@@ -29,12 +36,12 @@ export default class ShoppingCart extends React.Component {
     const textShoppingCart = 'Carrinho de compras';
     return (
       <Container fluid>
-        <Row className="mt-2">
+        <Row className="mt-3">
           <Col className="d-flex justify-content-center">
             <h1>{ textShoppingCart }</h1>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-center mt-2">
+        <Row className="d-flex justify-content-center mt-3">
           <Col xs={ 8 }>
             <Table className="table-striped">
               <thead className="table-primary">
@@ -47,20 +54,24 @@ export default class ShoppingCart extends React.Component {
               </thead>
               <tbody>
                 {
-                  shoppinCartItems.map((items, index) => (
+                  shoppinCartItems.map((item, index) => (
                     <tr key={ index }>
                       <td>
-                        <img src={ items.thumbnail } alt={ items.title } />
+                        <img src={ item.thumbnail } alt={ item.title } />
                       </td>
-                      <td>
-                        {items.title}
+                      <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
+                        {item.title}
                       </td>
-                      <td>
-                        { items.price }
+                      <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
+                        { item.price }
                       </td>
-                      <td>
-                        <Button>
-                          <BsFillTrash3Fill />
+                      <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
+                        <Button
+                          id={ item.id }
+                          onClick={ this.removeItemList }
+                          type="button"
+                        >
+                          delete
                         </Button>
                       </td>
                     </tr>
@@ -68,6 +79,18 @@ export default class ShoppingCart extends React.Component {
                 }
               </tbody>
             </Table>
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-center mt-3">
+          <Col
+            xs={ 4 }
+            className="d-flex justify-content-center"
+          >
+            <Link to="/">
+              <Button>
+                Tela inicial
+              </Button>
+            </Link>
           </Col>
         </Row>
       </Container>

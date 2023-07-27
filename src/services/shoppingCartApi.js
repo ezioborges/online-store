@@ -29,3 +29,9 @@ export const addProduct = (product) => new Promise((resolve) => {
   }
   simulateRequest(SUCCESS_STATUS)(resolve);
 });
+
+export const removeItem = (item) => new Promise((resolve) => {
+  const arrayItems = getProducts();
+  setProducts(arrayItems.filter((i) => i.id !== item.id));
+  simulateRequest(SUCCESS_STATUS)(resolve);
+});
