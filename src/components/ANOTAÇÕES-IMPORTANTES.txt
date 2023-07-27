@@ -1,2 +1,2 @@
- - melhorar a disposção dos conteudos no carrinho de compras;
- - resolver para que quando o carrinho estiver vazio aparecer a frase indicada na page;
+ - Não esquecer de fazer a função que remove produtos do localStorage (usar HOF filter);
+ - ver se eu consigo mostrar quando o carrinho de compras está vazio, ou com produto, na tela inicial;

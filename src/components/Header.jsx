@@ -29,7 +29,7 @@ export default class NavBar extends Component {
     return (
       <Container fluid>
         <Row
-          className="py-4 mb-0 bg-dark d-flex justify-content-around"
+          className="py-4 mb-0 bg-secondary d-flex justify-content-around"
         >
           <Col
             className={ `d-flex 
@@ -51,7 +51,7 @@ export default class NavBar extends Component {
                 onKeyUp={ handleKeyUp }
               />
               <Button
-                variant="danger"
+                variant="primary"
                 className="my-0 py-3 px-4"
                 data-testid="query-button"
                 onClick={ productsClick }
@@ -67,7 +67,7 @@ export default class NavBar extends Component {
             <Link to="/shopping-cart">
               <Button
                 className="m-0 py-2 d-flex justify-content-center"
-                variant="danger"
+                variant="primary"
                 id="button-addon2"
               >
                 <AiOutlineShoppingCart
@@ -89,7 +89,7 @@ export default class NavBar extends Component {
                     id="nav-dropdown-dark-example"
                     title="Categorias"
                     className="py-2 d-flex justify-content-center"
-                    style={ { fontSize: '1.8em' } }
+                    style={ { fontSize: '1.3em' } }
                   >
                     <div className="dropdown-box element">
                       {
