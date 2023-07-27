@@ -52,7 +52,6 @@ export default class ProductsCard extends Component {
               >
                 <Card.Text
                   className="text-truncate"
-                  style={ { width: '18rem' } }
                 >
                   { singleProduct.title }
                 </Card.Text>
