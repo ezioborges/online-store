@@ -9,7 +9,7 @@ export default class Body extends Component {
     const emptyMessage = 'Digite algum termo de pesquisa ou escolha uma categoria.';
     const { validRequest, products, initialMsg } = this.props;
     return (
-      <Container fluid className="d-flex flex-wrap">
+      <Container fluid>
         { initialMsg && (
           <Container fluid className="d-flex justify-content-center">
             <h3 data-testid="home-initial-message">{ emptyMessage }</h3>
