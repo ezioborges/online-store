@@ -3,12 +3,13 @@ import { Component } from 'react';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import * as api from '../services/api';
+import { addProduct } from '../services/shoppingCartApi';
 
 export default class ProductDetailCard extends Component {
   constructor() {
     super();
     this.state = {
-      productDetails: '',
+      productDetails: {},
     };
   }
 
@@ -22,8 +23,11 @@ export default class ProductDetailCard extends Component {
     this.setState({ productDetails: product });
   };
 
-  shoppingCart = () => {
+  saveProductOnShoppingCart = async () => {
+    const { productDetails } = this.state;
     const { history } = this.props;
+
+    await addProduct(productDetails);
     history.push('/shopping-cart');
   };
 
@@ -67,7 +71,7 @@ export default class ProductDetailCard extends Component {
                 <Col className="d-flex justify-content-center">
                   <Button
                     style={ { height: '10vh', width: '10vw' } }
-                    onClick={ this.shoppingCart }
+                    onClick={ this.saveProductOnShoppingCart }
                     data-testid="shopping-cart-button"
                   >
                     Adicionar ao carrinho de compras

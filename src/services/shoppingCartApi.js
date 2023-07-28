@@ -25,7 +25,8 @@ export const readGetProducts = () => new Promise((resolve) => {
 export const addProduct = (product) => new Promise((resolve) => {
   if (product) {
     const productsArray = getProducts();
-    setProducts([...productsArray, product]);
+    const newProduct = { ...product, quantity: 1 };
+    setProducts([...productsArray, newProduct]);
   }
   simulateRequest(SUCCESS_STATUS)(resolve);
 });

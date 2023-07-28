@@ -16,7 +16,6 @@ export default class ShoppingCart extends React.Component {
 
   componentDidMount() {
     this.setItemsInState();
-    // this.removeItemList()
   }
 
   setItemsInState = async () => {
@@ -29,6 +28,39 @@ export default class ShoppingCart extends React.Component {
   removeItemList = async ({ target }) => {
     await removeItem(target);
     await this.setItemsInState();
+  };
+
+  incrementQuantity = async ({ target }) => {
+    const { shoppinCartItems } = this.state;
+    const prod = shoppinCartItems.find((pd) => pd.id === target.id);
+    prod.quantity += 1;
+    this.setState({
+      shoppinCartItems,
+    }, () => this.setItemsOnLocalStorage());
+  };
+
+  decrementQuantity = async ({ target }) => {
+    const { shoppinCartItems } = this.state;
+    const prod = shoppinCartItems.find((pd) => pd.id === target.id);
+    prod.quantity -= 1;
+    this.setState({
+      shoppinCartItems,
+    }, () => this.setItemsOnLocalStorage());
+  };
+
+  priceFormated = (price) => {
+    const formarter = new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+    });
+
+    return formarter.format(price);
+  };
+
+  setItemsOnLocalStorage = () => {
+    const { shoppinCartItems } = this.state;
+    localStorage.setItem('products', JSON.stringify(shoppinCartItems));
   };
 
   render() {
@@ -49,6 +81,7 @@ export default class ShoppingCart extends React.Component {
                   <th className="text-center">*</th>
                   <th className="text-center">Nome do Produto</th>
                   <th className="text-center">Preço</th>
+                  <th className="text-center">Quantidade</th>
                   <th className="text-center">Excluir</th>
                 </tr>
               </thead>
@@ -63,7 +96,26 @@ export default class ShoppingCart extends React.Component {
                         {item.title}
                       </td>
                       <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
-                        { item.price }
+                        { this.priceFormated(item.price) }
+                      </td>
+                      <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
+                        <div className="d-flex">
+                          <button
+                            type="button"
+                            id={ item.id }
+                            onClick={ this.decrementQuantity }
+                          >
+                            -
+                          </button>
+                          <h2>{ item.quantity }</h2>
+                          <button
+                            type="button"
+                            id={ item.id }
+                            onClick={ this.incrementQuantity }
+                          >
+                            +
+                          </button>
+                        </div>
                       </td>
                       <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
                         <Button
