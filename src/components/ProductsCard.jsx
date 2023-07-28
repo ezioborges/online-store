@@ -6,8 +6,7 @@ import { Card, CardGroup, Tooltip, OverlayTrigger, Button } from 'react-bootstra
 
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-// import { saveProduct } from '../services/shoppingCartApi';
-import './Style/ProductsCard.css';
+import '../Style/ProductsCard.css';
 import { addProduct } from '../services/shoppingCartApi';
 
 export default class ProductsCard extends Component {

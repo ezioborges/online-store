@@ -1,0 +1,2 @@
+ - Ajustar as imagens dos cards!
+ - continuar melhoria dos códigos

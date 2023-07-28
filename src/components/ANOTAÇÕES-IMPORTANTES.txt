@@ -1,3 +1,0 @@
- - Não esquecer de fazer a função que remove produtos do localStorage (usar HOF filter);
- - ver se eu consigo mostrar quando o carrinho de compras está vazio, ou com produto, na tela inicial;
- - alinhar td

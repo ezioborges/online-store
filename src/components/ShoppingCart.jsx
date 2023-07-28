@@ -5,6 +5,7 @@ import { Button, Col, Container, Row, Table } from 'react-bootstrap';
 // import { BsFillTrash3Fill } from 'react-icons/bs';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { readGetProducts, removeItem } from '../services/shoppingCartApi';
+import priceFormated from '../utils/formaterPrice';
 
 export default class ShoppingCart extends React.Component {
   constructor() {
@@ -48,15 +49,15 @@ export default class ShoppingCart extends React.Component {
     }, () => this.setItemsOnLocalStorage());
   };
 
-  priceFormated = (price) => {
-    const formarter = new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-      minimumFractionDigits: 2,
-    });
+  // priceFormated = (price) => {
+  //   const formarter = new Intl.NumberFormat('pt-BR', {
+  //     style: 'currency',
+  //     currency: 'BRL',
+  //     minimumFractionDigits: 2,
+  //   });
 
-    return formarter.format(price);
-  };
+  //   return formarter.format(price);
+  // };
 
   setItemsOnLocalStorage = () => {
     const { shoppinCartItems } = this.state;
@@ -96,7 +97,7 @@ export default class ShoppingCart extends React.Component {
                         {item.title}
                       </td>
                       <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
-                        { this.priceFormated(item.price) }
+                        { priceFormated(item.price) }
                       </td>
                       <td style={ { verticalAlign: 'middle', textAlign: 'center' } }>
                         <div className="d-flex">

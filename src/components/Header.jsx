@@ -13,7 +13,7 @@ import Container from 'react-bootstrap/Container';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import PropTypes from 'prop-types';
-import './Style/Header.css';
+import '../Style/Header.css';
 
 export default class NavBar extends Component {
   render() {
