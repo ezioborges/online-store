@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 export default class ProductDescription extends Component {
   render() {
@@ -27,3 +28,7 @@ export default class ProductDescription extends Component {
     );
   }
 }
+
+ProductDescription.propTypes = {
+  productDetails: PropTypes.object,
+}.isRequired;

@@ -12,6 +12,7 @@ import '../Style/ProductDetails.css';
 import * as api from '../services/api';
 import { addProduct } from '../services/shoppingCartApi';
 import ProductDescription from '../components/ProductDescription';
+import ProductQuantity from '../components/ProductQuantity';
 
 export default class ProductDetails extends Component {
   constructor(props) {
@@ -117,6 +118,11 @@ export default class ProductDetails extends Component {
             <ProductDescription
               productDetails={ productDetails }
             />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={ 6 }>
+            <ProductQuantity />
           </Col>
         </Row>
       </Container>

@@ -27,7 +27,7 @@
   height: 10vh;
 }
 
-.btn:hover {
+.init-hover:hover {
   background-color: rgba(0, 0, 0, 0.382);
   color: white;
   border-radius: 100%;

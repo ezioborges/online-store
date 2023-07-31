@@ -6,7 +6,7 @@ import priceFormated from '../utils/formaterPrice';
 
 export default class ProductDetailCard extends Component {
   render() {
-    const { productDetails, saveProductOnShoppingCart, home } = this.props;
+    const { productDetails, saveProductOnShoppingCart } = this.props;
     const { title, price, pictures } = productDetails;
 
     return (
@@ -18,15 +18,6 @@ export default class ProductDetailCard extends Component {
             {priceFormated(price)}
           </Card.Footer>
           <Row className="d-flex flex-row justify-content-center mt-3">
-            <Col className="d-flex justify-content-center">
-              <Button
-                variant="primary"
-                onClick={ home }
-                style={ { height: '10vh', width: '10vw' } }
-              >
-                voltar para tela inicial
-              </Button>
-            </Col>
             <Col className="d-flex justify-content-center">
               <Button
                 style={ { height: '10vh', width: '10vw' } }
