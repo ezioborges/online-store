@@ -1,0 +1,40 @@
+.element {
+    scrollbar-width: thin;
+    scrollbar-color: black;
+  }
+  
+  .element::-webkit-scrollbar {
+    width: 4px;
+    height: 3px; /* A altura só é vista quando a rolagem é horizontal */
+  }
+  
+  .element::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 2px;
+  }
+  
+  .element::-webkit-scrollbar-thumb {
+    background-color: black;;
+  }
+
+.init-hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: none;
+  width: 5vw;
+  height: 10vh;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.382);
+  color: white;
+  border-radius: 100%;
+}
+
+.desc-container {
+  height: 60vh;
+  /* border: 1px solid red; */
+  overflow: scroll;
+}

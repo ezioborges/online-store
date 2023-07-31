@@ -1,2 +1,2 @@
- - Ajustar as imagens dos cards!
  - continuar melhoria dos códigos
+ - melhorias nos cards: separar os botões do ProductDetailsCard

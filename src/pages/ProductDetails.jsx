@@ -1,11 +1,17 @@
+/* eslint-disable react/jsx-max-depth */
+/* eslint-disable react/jsx-no-undef */
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import { BsArrowLeftCircle, BsFillCartFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import ProductDetailCard from '../components/ProductDetailCard';
 import IsLoading from '../components/IsLoading';
+import '../Style/ProductDetails.css';
 
 import * as api from '../services/api';
 import { addProduct } from '../services/shoppingCartApi';
+import ProductDescription from '../components/ProductDescription';
 
 export default class ProductDetails extends Component {
   constructor(props) {
@@ -46,6 +52,21 @@ export default class ProductDetails extends Component {
 
   render() {
     const { productDetails, isLoading } = this.state;
+    const homeTool = (
+      <Tooltip>
+        <strong>
+          Tela inicial
+        </strong>
+      </Tooltip>
+    );
+
+    const shoppingTool = (
+      <Tooltip>
+        <strong>
+          Carrinho de compras
+        </strong>
+      </Tooltip>
+    );
 
     if (isLoading) {
       return <IsLoading />;
@@ -53,12 +74,50 @@ export default class ProductDetails extends Component {
 
     return (
       <Container fluid>
-        <Row className="d-flex justify-content-center m-5">
-          <ProductDetailCard
-            saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
-            home={ this.home }
-            productDetails={ productDetails }
-          />
+        <Row>
+          <Col
+            className="d-flex justify-content-start"
+          >
+            <Button
+              onClick={ this.home }
+              className="init-hover mt-3"
+            >
+              <OverlayTrigger placement="bottom" overlay={ homeTool }>
+                <p style={ { fontSize: '2em', color: 'black' } }>
+                  <BsArrowLeftCircle />
+                </p>
+              </OverlayTrigger>
+            </Button>
+          </Col>
+          <Col
+            className="d-flex justify-content-end"
+          >
+            <Link to="/shopping-cart">
+              <Button
+                className="init-hover mt-3"
+              >
+                <OverlayTrigger placement="bottom" overlay={ shoppingTool }>
+                  <p style={ { fontSize: '2em', color: 'black' } }>
+                    <BsFillCartFill />
+                  </p>
+                </OverlayTrigger>
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+        <Row className="mt-3">
+          <Col>
+            <ProductDetailCard
+              saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
+              home={ this.home }
+              productDetails={ productDetails }
+            />
+          </Col>
+          <Col xs={ 8 }>
+            <ProductDescription
+              productDetails={ productDetails }
+            />
+          </Col>
         </Row>
       </Container>
     );

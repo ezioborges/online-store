@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import '../Style/ProductsCard.css';
 import { addProduct } from '../services/shoppingCartApi';
+import priceFormated from '../utils/formaterPrice';
 
 export default class ProductsCard extends Component {
   saveProductsClick = async (e) => {
@@ -31,15 +32,16 @@ export default class ProductsCard extends Component {
   render() {
     const { singleProduct } = this.props;
     return (
-      <CardGroup className="d-flex justify-content-center mb-3">
+      <CardGroup className="mb-3">
         <Card>
           <Link
             to={ `/product-details/${singleProduct.id}` }
             data-testid="product-detail-link"
-            className="product-detail-link"
+            className="product-detail-link d-flex flex-column align-items-center"
           >
             <Card.Img
               variant="top"
+              style={ { width: '40%' } }
               src={ singleProduct.thumbnail }
               alt={ singleProduct.title }
             />
@@ -50,7 +52,7 @@ export default class ProductsCard extends Component {
                 id="t-1"
               >
                 <Card.Text
-                  className="text-truncate"
+                  style={ { overflow: 'hidden', height: '40px' } }
                 >
                   { singleProduct.title }
                 </Card.Text>
@@ -59,8 +61,7 @@ export default class ProductsCard extends Component {
 
             <Card.Footer>
               <Card.Text className="d-flex justify-content-center">
-                { singleProduct.price
-                  .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) }
+                { priceFormated(singleProduct.price) }
 
               </Card.Text>
             </Card.Footer>
