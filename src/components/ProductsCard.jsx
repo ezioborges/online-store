@@ -41,7 +41,6 @@ export default class ProductsCard extends Component {
           >
             <Card.Img
               variant="top"
-              style={ { width: '40%' } }
               src={ singleProduct.thumbnail }
               alt={ singleProduct.title }
             />

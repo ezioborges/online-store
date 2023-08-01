@@ -17,7 +17,7 @@ export default class ProductDescription extends Component {
                   style={ { listStyle: 'none' } }
                 >
                   <p>
-                    <strong>{attr.name}: </strong> {attr.value_name}
+                    { `${attr.name}: ${attr.value_name} `}
                   </p>
                 </li>
               ))
