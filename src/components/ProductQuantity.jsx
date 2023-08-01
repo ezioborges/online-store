@@ -22,10 +22,10 @@ export default class ProductQuantity extends Component {
       >
         <Row className="d-flex justify-content-center">
           <Row>
-            <h1 className="d-flex justify-content-center">Quantidade</h1>
+            <h1>Quantidade</h1>
           </Row>
           <Row>
-            <Col className="d-flex justify-content-center">
+            <Col className="d-flex">
               <Button
                 className="m-2"
                 style={ { borderRadius: '100%', width: '2.5vw' } }

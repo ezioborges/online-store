@@ -121,7 +121,7 @@ export default class ProductDetails extends Component {
           <div className="desc-elements">
             <Col
               xs={ 5 }
-              className="d-flex justify-content-end"
+              className="d-flex justify-content-center"
             >
               <ProductDetailCard
                 saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
