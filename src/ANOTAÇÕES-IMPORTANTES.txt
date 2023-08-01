@@ -1,2 +1,3 @@
  - continuar melhoria dos códigos
  - implementar as funções necessárias no na tela de detalhamento dos produtos;
+ - salvar os comentários no localStorage e apresentar na tela de detalhes;
