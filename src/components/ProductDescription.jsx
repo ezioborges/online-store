@@ -7,9 +7,9 @@ export default class ProductDescription extends Component {
     const { productDetails } = this.props;
     const { attributes } = productDetails;
     return (
-      <Container className="desc-container element">
+      <Container>
         <Row>
-          <ul>
+          <ul className="list-text">
             {
               attributes.map((attr, index) => (
                 <li

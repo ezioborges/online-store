@@ -1,2 +1,2 @@
  - continuar melhoria dos códigos
- - melhorias nos cards: separar os botões do ProductDetailsCard
+ - implementar as funções necessárias no na tela de detalhamento dos produtos;

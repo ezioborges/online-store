@@ -13,6 +13,7 @@ import * as api from '../services/api';
 import { addProduct } from '../services/shoppingCartApi';
 import ProductDescription from '../components/ProductDescription';
 import ProductQuantity from '../components/ProductQuantity';
+import ReviewProduct from '../components/ReviewProduct';
 
 export default class ProductDetails extends Component {
   constructor(props) {
@@ -20,6 +21,8 @@ export default class ProductDetails extends Component {
     this.state = {
       productDetails: null,
       isLoading: true,
+      email: '',
+      comment: '',
     };
   }
 
@@ -51,8 +54,14 @@ export default class ProductDetails extends Component {
     history.push('/');
   };
 
+  handleChange = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
+
   render() {
-    const { productDetails, isLoading } = this.state;
+    const { productDetails, isLoading, email, comment } = this.state;
+    console.log('vem da productDetails', productDetails);
     const homeTool = (
       <Tooltip>
         <strong>
@@ -106,24 +115,42 @@ export default class ProductDetails extends Component {
             </Link>
           </Col>
         </Row>
-        <Row className="mt-3">
+        <Row
+          className="desc-content element m-auto my-3"
+        >
+          <div className="desc-elements">
+            <Col
+              xs={ 5 }
+              className="d-flex justify-content-end"
+            >
+              <ProductDetailCard
+                saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
+                home={ this.home }
+                productDetails={ productDetails }
+              />
+            </Col>
+            <Col
+              className="desc-text element"
+            >
+              <ProductDescription
+                productDetails={ productDetails }
+              />
+            </Col>
+          </div>
+        </Row>
+        <Row>
           <Col>
-            <ProductDetailCard
+            <ProductQuantity
               saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
-              home={ this.home }
-              productDetails={ productDetails }
-            />
-          </Col>
-          <Col xs={ 8 }>
-            <ProductDescription
-              productDetails={ productDetails }
             />
           </Col>
         </Row>
         <Row>
-          <Col xs={ 6 }>
-            <ProductQuantity />
-          </Col>
+          <ReviewProduct
+            email={ email }
+            comment={ comment }
+            handleChange={ this.handleChange }
+          />
         </Row>
       </Container>
     );

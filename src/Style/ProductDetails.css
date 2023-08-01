@@ -33,8 +33,25 @@
   border-radius: 100%;
 }
 
-.desc-container {
-  height: 60vh;
-  /* border: 1px solid red; */
+.desc-content {
+  display: flex;
+  justify-content: center;
+  height: 43vh;
+  width: 80%;
+}
+
+.desc-elements {
+  display: flex;
+  width: 90%;
+}
+
+.desc-text {
   overflow: scroll;
+  height: 40vh;
+}
+
+.list-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
