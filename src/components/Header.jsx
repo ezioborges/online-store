@@ -29,7 +29,7 @@ export default class NavBar extends Component {
     return (
       <Container fluid>
         <Row
-          className="py-4 mb-0 bg-secondary d-flex justify-content-around"
+          className="pt-3 mb-0 bg-secondary d-flex justify-content-around"
         >
           <Col
             className={ `d-flex 
@@ -42,7 +42,6 @@ export default class NavBar extends Component {
           <Col xs={ 6 }>
             <InputGroup className="d-flex justify-content-center align-items-center">
               <Form.Control
-                className="py-3"
                 placeholder="Digite aqui sua busca..."
                 data-testid="query-input"
                 value={ query }
@@ -52,7 +51,7 @@ export default class NavBar extends Component {
               />
               <Button
                 variant="primary"
-                className="my-0 py-3 px-4"
+                className="px-4"
                 data-testid="query-button"
                 onClick={ productsClick }
                 type="button"
@@ -66,19 +65,19 @@ export default class NavBar extends Component {
           >
             <Link to="/shopping-cart">
               <Button
-                className="m-0 py-2 d-flex justify-content-center"
+                className="m-0 d-flex justify-content-center"
                 variant="primary"
                 id="button-addon2"
               >
                 <AiOutlineShoppingCart
-                  style={ { fontSize: '2em', alignSelf: 'center' } }
+                  style={ { fontSize: '1.3em', alignSelf: 'center' } }
                 />
               </Button>
             </Link>
           </Col>
         </Row>
         <Row className="mb-4">
-          <Navbar bg="secondary" expand="lg">
+          <Navbar bg="secondary">
             <Container fluid>
               <Navbar.Collapse
                 id="navbar-dark-example"
@@ -88,7 +87,7 @@ export default class NavBar extends Component {
                   <NavDropdown
                     id="nav-dropdown-dark-example"
                     title="Categorias"
-                    className="py-2 d-flex justify-content-center"
+                    className="d-flex justify-content-center"
                     style={ { fontSize: '1.3em' } }
                   >
                     <div className="dropdown-box element">
@@ -98,7 +97,7 @@ export default class NavBar extends Component {
                             key={ index }
                             id={ category.id }
                             onClick={ getProductsByCategoryIdClick }
-                            className="d-flex justify-content-center py-4 px-4"
+                            className="d-flex justify-content-center"
                           >
                             { category.name }
                           </NavDropdown.Item>

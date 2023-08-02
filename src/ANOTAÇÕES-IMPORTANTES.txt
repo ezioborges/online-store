@@ -1,4 +1,1 @@
- - continuar melhoria dos códigos
- - implementar as funções necessárias no na tela de detalhamento dos produtos;
- - salvar os comentários no localStorage e apresentar na tela de detalhes;
- - Colocar tooltip no productDetailCard, no nome do produto;
+ - antes de seguir com o projeto ajustar toda a estilização da página
