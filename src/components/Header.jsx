@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import { Component } from 'react';
 import {
-  Button,
-  Col,
   Nav,
   NavDropdown,
   Navbar,
