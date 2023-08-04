@@ -3,8 +3,6 @@ import { Component } from 'react';
 import {
   Button,
   Col,
-  Form,
-  InputGroup,
   Nav,
   NavDropdown,
   Navbar,
@@ -27,56 +25,60 @@ export default class NavBar extends Component {
     } = this.props;
 
     return (
-      <Container fluid>
-        <Row
-          className="pt-3 mb-0 bg-secondary d-flex justify-content-around"
+      <div className="container-fluid">
+        <div
+          className="row p-3 d-flex bg-primary"
         >
-          <Col
-            className={ `d-flex 
-            justify-content-center 
-            align-items-center` }
-            style={ { color: 'white' } }
+          <div
+            className="col-12 col-md-3 d-flex justify-content-center align-self-end"
           >
-            <p style={ { fontSize: '1.2em' } }>Online Store</p>
-          </Col>
-          <Col xs={ 6 }>
-            <InputGroup className="d-flex justify-content-center align-items-center">
-              <Form.Control
-                placeholder="Digite aqui sua busca..."
-                data-testid="query-input"
-                value={ query }
-                name="query"
-                onChange={ handleChange }
-                onKeyUp={ handleKeyUp }
-              />
-              <Button
-                variant="primary"
-                className="px-4"
-                data-testid="query-button"
-                onClick={ productsClick }
-                type="button"
-              >
-                pesquisar
-              </Button>
-            </InputGroup>
-          </Col>
-          <Col
-            className="d-flex justify-content-center align-items-center"
+            <p>Online Store</p>
+          </div>
+          <div className="col-12 col-md-7">
+            <div className="form-group">
+              <div className="d-md-flex justify-content-center">
+                <div className="col-12 col-md-10 me-1 mb-2">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Digite aqui sua busca..."
+                    data-testid="query-input"
+                    value={ query }
+                    name="query"
+                    onChange={ handleChange }
+                    onKeyUp={ handleKeyUp }
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+                <div className="d-flex justify-content-center mb-2">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-testid="query-button"
+                    onClick={ productsClick }
+                  >
+                    pesquisar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-12 col-md-2 d-flex justify-content-center"
           >
             <Link to="/shopping-cart">
-              <Button
-                className="m-0 d-flex justify-content-center"
-                variant="primary"
+              <button
+                type="button"
+                className="btn btn-secondary"
+                variant="secondary"
                 id="button-addon2"
               >
-                <AiOutlineShoppingCart
-                  style={ { fontSize: '1.3em', alignSelf: 'center' } }
-                />
-              </Button>
+                <AiOutlineShoppingCart />
+              </button>
             </Link>
-          </Col>
-        </Row>
-        <Row className="mb-4">
+          </div>
+        </div>
+        <Row className="">
           <Navbar bg="secondary">
             <Container fluid>
               <Navbar.Collapse
@@ -110,7 +112,7 @@ export default class NavBar extends Component {
             </Container>
           </Navbar>
         </Row>
-      </Container>
+      </div>
     );
   }
 }
