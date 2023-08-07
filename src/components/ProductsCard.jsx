@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unused-class-component-methods */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Component } from 'react';
-import { Card, CardGroup, Tooltip, OverlayTrigger, Button } from 'react-bootstrap';
+import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
@@ -32,47 +32,48 @@ export default class ProductsCard extends Component {
   render() {
     const { singleProduct } = this.props;
     return (
-      <CardGroup className="mb-3">
-        <Card>
-          <Link
-            to={ `/product-details/${singleProduct.id}` }
-            data-testid="product-detail-link"
-            className="product-detail-link d-flex flex-column align-items-center"
-          >
-            <Card.Img
-              variant="top"
-              src={ singleProduct.thumbnail }
-              alt={ singleProduct.title }
-            />
+      <div className="card text-center mb-3">
+        <Link
+          to={ `/product-details/${singleProduct.id}` }
+          data-testid="product-detail-link"
+          className="product-detail-link"
+        >
+          <img
+            className="card-img-top"
+            style={ { width: '30%' } }
+            src={ singleProduct.thumbnail }
+            alt={ singleProduct.title }
+          />
 
-            <Card.Body>
-              <this.DescriptionProduct
-                title={ singleProduct.title }
-                id="t-1"
+          <div className="card-body">
+            <this.DescriptionProduct
+              title={ singleProduct.title }
+              id="t-1"
+            >
+              <h5
+                style={ { overflow: 'hidden', height: '40px' } }
               >
-                <Card.Text
-                  style={ { overflow: 'hidden', height: '40px' } }
-                >
-                  { singleProduct.title }
-                </Card.Text>
-              </this.DescriptionProduct>
-            </Card.Body>
+                { singleProduct.title }
+              </h5>
+            </this.DescriptionProduct>
+          </div>
 
-            <Card.Footer>
-              <Card.Text className="d-flex justify-content-center">
-                { priceFormated(singleProduct.price) }
+          <div className="card-footer">
+            <span className="d-flex justify-content-center">
+              { priceFormated(singleProduct.price) }
 
-              </Card.Text>
-            </Card.Footer>
-          </Link>
-          <Button
-            data-testid="product-add-to-cart"
-            onClick={ this.saveProductsClick }
-          >
-            Adicionar ao Carrinho
-          </Button>
-        </Card>
-      </CardGroup>
+            </span>
+          </div>
+        </Link>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          data-testid="product-add-to-cart"
+          onClick={ this.saveProductsClick }
+        >
+          Adicionar ao Carrinho
+        </button>
+      </div>
     );
   }
 }

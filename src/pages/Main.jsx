@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as api from '../services/api';
-import IsLoagind from './IsLoading';
-import Header from './Header';
-import Body from './Body';
+import IsLoagind from '../components/IsLoading';
+import Header from '../components/Header';
+import Body from '../components/Body';
+import Categories from '../components/Categories';
 
 export default class Home extends React.Component {
   constructor() {
@@ -91,6 +92,9 @@ export default class Home extends React.Component {
           handleChange={ this.handleChange }
           isLoading={ isLoading }
           handleKeyUp={ this.handleKeyUp }
+        />
+
+        <Categories
           allCategories={ allCategories }
           getProductsByCategoryIdClick={ this.getProductsByCategoryIdClick }
         />

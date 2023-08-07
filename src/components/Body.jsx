@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-max-depth */
 import { Component } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import ProductsCard from './ProductsCard';
 
@@ -19,14 +19,14 @@ export default class Body extends Component {
           {
             validRequest
                    && (products.map((singleProduct, index) => (
-                     <Col
+                     <div
                        key={ index }
-                       xs={ 3 }
+                       className="col-12 col-lg-4"
                      >
                        <ProductsCard
                          singleProduct={ singleProduct }
                        />
-                     </Col>
+                     </div>
 
                    )))
           }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom/cjs/react-router-dom';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
-import Main from './components/Main';
+import Main from './pages/Main';
 import ShoppingCart from './components/ShoppingCart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductDetails from './pages/ProductDetails';

@@ -1,6 +1,6 @@
 :root{
-  --primary: #d8cab7;
-  --secondary: #683401;
+  --primary: #000;
+  --secondary: #d3d3d3;
   /* tertiary não é um padrão do Bootstrap, mas pode ser adicionado! */
   --tertiary: #72F2EB;
   --success: #0099DD;
