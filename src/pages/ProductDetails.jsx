@@ -122,7 +122,13 @@ export default class ProductDetails extends Component {
           className="row m-auto my-3 element desc-text"
         >
           <div
-            className="d-flex flex-column flex-md-row desc-content m-auto px-4"
+            className={ `d-flex
+              flex-column
+              flex-md-row
+              justify-content-center
+              desc-content
+              m-auto
+              px-4` }
           >
             <div>
               <ProductDetailCard
