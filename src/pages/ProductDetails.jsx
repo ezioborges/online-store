@@ -125,7 +125,7 @@ export default class ProductDetails extends Component {
             className={ `d-flex
               flex-column
               flex-md-row
-              justify-content-center
+              justify-content-md-center
               desc-content
               m-auto
               px-4` }
