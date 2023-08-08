@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export default class ProductDescription extends Component {
@@ -7,8 +6,8 @@ export default class ProductDescription extends Component {
     const { productDetails } = this.props;
     const { attributes } = productDetails;
     return (
-      <Container>
-        <Row>
+      <div className="container-fluid">
+        <div className="row">
           <ul className="list-text">
             {
               attributes.map((attr, index) => (
@@ -16,15 +15,15 @@ export default class ProductDescription extends Component {
                   key={ index }
                   style={ { listStyle: 'none' } }
                 >
-                  <p>
+                  <span>
                     { `${attr.name}: ${attr.value_name} `}
-                  </p>
+                  </span>
                 </li>
               ))
             }
           </ul>
-        </Row>
-      </Container>
+        </div>
+      </div>
     );
   }
 }

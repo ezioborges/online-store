@@ -17,37 +17,18 @@
     background-color: black;;
   }
 
-.init-hover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border: none;
-  width: 5vw;
-  height: 10vh;
-}
-
-.init-hover:hover {
-  background-color: rgba(0, 0, 0, 0.382);
-  color: white;
-  border-radius: 100%;
-}
-
 .desc-content {
-  display: flex;
-  justify-content: center;
-  height: 43vh;
-  width: 80%;
+  height: 500px;
+  width: 90%;
 }
 
 .desc-elements {
   display: flex;
-  width: 90%;
+  width: 80%;
 }
 
 .desc-text {
   overflow: scroll;
-  height: 40vh;
 }
 
 .list-text {

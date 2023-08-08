@@ -1,1 +1,2 @@
- - antes de seguir com o projeto ajustar toda a estilização da página
+ - terminar a implementação dos cmomentários após avaliação
+ - ajustar a pagina de carrinho de compras

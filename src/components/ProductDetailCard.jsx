@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-max-depth */
 import { Component } from 'react';
-import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import priceFormated from '../utils/formaterPrice';
+import ProductQuantity from './ProductQuantity';
 
 export default class ProductDetailCard extends Component {
   render() {
@@ -10,19 +10,30 @@ export default class ProductDetailCard extends Component {
     const { title, price, pictures } = productDetails;
 
     return (
-      <Card style={ { width: '8vw', height: '10vh' } }>
-        <Card.Img variant="top" src={ pictures[0].url } alt={ title } />
-        <Card.Body>
-          <Card.Title
-            style={ { height: '35px', overflow: 'hidden' } }
-          >
-            { title }
-          </Card.Title>
-          <Card.Footer className="d-flex justify-content-center">
-            {priceFormated(price)}
-          </Card.Footer>
-        </Card.Body>
-      </Card>
+      <>
+        <div className="card" style={ { width: '18rem' } }>
+          <img
+            className="card-img-top"
+            src={ pictures[0].url }
+            alt={ title }
+            style={ { width: '20%', alignSelf: 'center' } }
+          />
+          <div className="card-body">
+            <h5
+              className="card-title"
+              style={ { height: '35px', overflow: 'hidden' } }
+            >
+              { title }
+            </h5>
+            <div className="card-footer d-flex justify-content-center">
+              {priceFormated(price)}
+            </div>
+          </div>
+        </div>
+        <div>
+          <ProductQuantity />
+        </div>
+      </>
     );
   }
 }

@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-undef */
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Col, Container, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { BsArrowLeftCircle, BsFillCartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import ProductDetailCard from '../components/ProductDetailCard';
@@ -12,7 +12,6 @@ import '../Style/ProductDetails.css';
 import * as api from '../services/api';
 import { addProduct } from '../services/shoppingCartApi';
 import ProductDescription from '../components/ProductDescription';
-import ProductQuantity from '../components/ProductQuantity';
 import ReviewProduct from '../components/ReviewProduct';
 
 export default class ProductDetails extends Component {
@@ -83,76 +82,70 @@ export default class ProductDetails extends Component {
     }
 
     return (
-      <Container fluid>
-        <Row>
-          <Col
-            className="d-flex justify-content-start"
+      <div className="container-fluid element desc-text">
+        <div className="row py-3 px-3 bg-primary">
+          <div
+            className="col"
           >
-            <Button
-              onClick={ this.home }
-              className="init-hover mt-3"
-            >
-              <OverlayTrigger placement="bottom" overlay={ homeTool }>
-                <p style={ { fontSize: '2em', color: 'black' } }>
+            <OverlayTrigger placement="bottom" overlay={ homeTool }>
+              <button
+                type="button"
+                onClick={ this.home }
+                className="btn btn-primary btn-lg"
+                style={ { border: 'none' } }
+              >
+                <span>
                   <BsArrowLeftCircle />
-                </p>
-              </OverlayTrigger>
-            </Button>
-          </Col>
-          <Col
-            className="d-flex justify-content-end"
+                </span>
+              </button>
+            </OverlayTrigger>
+          </div>
+          <div
+            className="col d-flex justify-content-end"
           >
             <Link to="/shopping-cart">
-              <Button
-                className="init-hover mt-3"
-              >
-                <OverlayTrigger placement="bottom" overlay={ shoppingTool }>
-                  <p style={ { fontSize: '2em', color: 'black' } }>
+              <OverlayTrigger placement="bottom" overlay={ shoppingTool }>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-lg"
+                  style={ { border: 'none' } }
+                >
+                  <span>
                     <BsFillCartFill />
-                  </p>
-                </OverlayTrigger>
-              </Button>
+                  </span>
+                </button>
+              </OverlayTrigger>
             </Link>
-          </Col>
-        </Row>
-        <Row
-          className="desc-content element m-auto my-3"
+          </div>
+        </div>
+        <div
+          className="row m-auto my-3 element desc-text"
         >
-          <div className="desc-elements">
-            <Col
-              xs={ 5 }
-              className="d-flex justify-content-center"
-            >
+          <div
+            className="d-flex flex-column flex-md-row desc-content m-auto px-4"
+          >
+            <div>
               <ProductDetailCard
                 saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
                 home={ this.home }
                 productDetails={ productDetails }
               />
-            </Col>
-            <Col
-              className="desc-text element"
-            >
+            </div>
+            <div className="py-4">
               <ProductDescription
                 productDetails={ productDetails }
               />
-            </Col>
+            </div>
           </div>
-        </Row>
-        <Row>
-          <Col>
-            <ProductQuantity
-              saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
-            />
-          </Col>
-        </Row>
-        <Row>
+        </div>
+        <div>
           <ReviewProduct
             email={ email }
             comment={ comment }
             handleChange={ this.handleChange }
           />
-        </Row>
-      </Container>
+        </div>
+      </div>
     );
   }
 }

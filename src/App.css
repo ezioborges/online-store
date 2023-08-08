@@ -12,6 +12,9 @@
 .bg-primary, .btn-primary{
     background-color: var(--primary) !important;
 }
+.btn-primary:hover{
+    background-color: var(--secondary) !important;
+}
 .bg-secondary, .btn-secondary{
     background-color: var(--secondary) !important;
 }
