@@ -49,16 +49,6 @@ export default class ShoppingCart extends React.Component {
     }, () => this.setItemsOnLocalStorage());
   };
 
-  // priceFormated = (price) => {
-  //   const formarter = new Intl.NumberFormat('pt-BR', {
-  //     style: 'currency',
-  //     currency: 'BRL',
-  //     minimumFractionDigits: 2,
-  //   });
-
-  //   return formarter.format(price);
-  // };
-
   setItemsOnLocalStorage = () => {
     const { shoppinCartItems } = this.state;
     localStorage.setItem('products', JSON.stringify(shoppinCartItems));

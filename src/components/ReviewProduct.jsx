@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class ReviewProduct extends Component {
   render() {
-    const { email, comment, handleChange } = this.props;
-    console.log(email, comment);
+    const { email, comment, handleChange, submitComment, commentsArray } = this.props;
     return (
       <div
         className=""
@@ -30,8 +29,24 @@ export default class ReviewProduct extends Component {
               onChange={ handleChange }
             />
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={ submitComment }
+          >
+            Submit
+          </button>
         </form>
+        <ul>
+          {
+            commentsArray.map((c, i) => (
+              <li key={ i }>
+                <h6>{ c.email }</h6>
+                <p>{ c.comment }</p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     );
   }

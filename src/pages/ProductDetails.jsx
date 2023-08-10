@@ -13,6 +13,7 @@ import * as api from '../services/api';
 import { addProduct } from '../services/shoppingCartApi';
 import ProductDescription from '../components/ProductDescription';
 import ReviewProduct from '../components/ReviewProduct';
+import { getComments, setComments } from '../services/commentsApi';
 
 export default class ProductDetails extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class ProductDetails extends Component {
       isLoading: true,
       email: '',
       comment: '',
+      commentsArray: getComments() || [],
     };
   }
 
@@ -58,9 +60,22 @@ export default class ProductDetails extends Component {
     this.setState({ [name]: value });
   };
 
+  submitComment = (e) => {
+    e.preventDefault();
+    const { comment, email, commentsArray } = this.state;
+    const newComment = { email, comment };
+    this.setState((prevState) => ({
+      commentsArray: [...prevState.commentsArray, newComment],
+      email: '',
+      comment: '',
+    }));
+
+    const storedComments = [...commentsArray, newComment];
+    setComments(storedComments);
+  };
+
   render() {
-    const { productDetails, isLoading, email, comment } = this.state;
-    console.log('vem da productDetails', productDetails);
+    const { productDetails, isLoading, email, comment, commentsArray } = this.state;
     const homeTool = (
       <Tooltip>
         <strong>
@@ -149,6 +164,8 @@ export default class ProductDetails extends Component {
             email={ email }
             comment={ comment }
             handleChange={ this.handleChange }
+            submitComment={ this.submitComment }
+            commentsArray={ commentsArray }
           />
         </div>
       </div>

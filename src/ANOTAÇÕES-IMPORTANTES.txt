@@ -1,2 +1,5 @@
- - terminar a implementação dos cmomentários após avaliação
- - ajustar a pagina de carrinho de compras
+ - estilizar os comentários na página;
+ - ajustar a pagina de carrinho de compras para;
+ - melhorar o código do localStorage no shoppingCart seguir ProductDetails(ReviewProducts);
+ - prestar atenção no "state" e na função "submitComment" para usar como referencia 
+ na hora de mudar funções localStorage no shoppingCart;
