@@ -1,0 +1,9 @@
+.list-comments {
+  border-bottom: 1px solid black;
+  list-style-type: none;
+}
+
+.list-comments:hover {
+    background-color: rgba(128, 128, 128, 0.52);
+    border-radius: 25px;
+}

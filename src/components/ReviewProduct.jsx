@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../Style/ReviewProduct.css';
 
 export default class ReviewProduct extends Component {
   render() {
@@ -40,7 +41,10 @@ export default class ReviewProduct extends Component {
         <ul>
           {
             commentsArray.map((c, i) => (
-              <li key={ i }>
+              <li
+                key={ i }
+                className="list-comments mt-3 p-1"
+              >
                 <h6>{ c.email }</h6>
                 <p>{ c.comment }</p>
               </li>
