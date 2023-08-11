@@ -2,9 +2,10 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import React from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { readGetProducts, removeItem } from '../services/shoppingCartApi';
+import { getProducts, removeItem } from '../services/shoppingCartApi';
 import priceFormated from '../utils/formaterPrice';
 import '../Style/ShoppingCart.css';
+import { decrement, increment } from '../utils/productsAmount';
 
 export default class ShoppingCart extends React.Component {
   constructor() {
@@ -19,7 +20,7 @@ export default class ShoppingCart extends React.Component {
   }
 
   setItemsInState = async () => {
-    const items = await readGetProducts();
+    const items = await getProducts();
     this.setState({
       shoppinCartItems: items,
     });
@@ -32,8 +33,7 @@ export default class ShoppingCart extends React.Component {
 
   incrementQuantity = async ({ target }) => {
     const { shoppinCartItems } = this.state;
-    const prod = shoppinCartItems.find((pd) => pd.id === target.id);
-    prod.quantity += 1;
+    increment(target, shoppinCartItems);
     this.setState(
       {
         shoppinCartItems,
@@ -44,8 +44,7 @@ export default class ShoppingCart extends React.Component {
 
   decrementQuantity = async ({ target }) => {
     const { shoppinCartItems } = this.state;
-    const prod = shoppinCartItems.find((pd) => pd.id === target.id);
-    prod.quantity -= 1;
+    decrement(target, shoppinCartItems);
     this.setState(
       {
         shoppinCartItems,

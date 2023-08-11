@@ -11,10 +11,10 @@ import { addProduct } from '../services/shoppingCartApi';
 import priceFormated from '../utils/formaterPrice';
 
 export default class ProductsCard extends Component {
-  saveProductsClick = async (e) => {
+  saveProductsClick = (e) => {
     e.preventDefault();
     const { singleProduct } = this.props;
-    await addProduct(singleProduct);
+    addProduct(singleProduct);
   };
 
   DescriptionProduct = ({ id, children, title }) => (
