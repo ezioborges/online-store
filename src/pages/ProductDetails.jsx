@@ -35,7 +35,7 @@ export default class ProductDetails extends Component {
     const { match: { params: { id } } } = this.props;
     try {
       const product = await api.getProductById(id);
-      this.setState({ productDetails: product, isLoading: false });
+      this.setState({ productDetails: { ...product, quantity: 1 }, isLoading: false });
     } catch (error) {
       console.error('Erro ao buscar detalhes do produto:', error);
       this.setState({ isLoading: false });
@@ -76,6 +76,7 @@ export default class ProductDetails extends Component {
 
   render() {
     const { productDetails, isLoading, email, comment, commentsArray } = this.state;
+    const { history } = this.props;
     const homeTool = (
       <Tooltip>
         <strong>
@@ -150,6 +151,7 @@ export default class ProductDetails extends Component {
                 saveProductOnShoppingCart={ this.saveProductOnShoppingCart }
                 home={ this.home }
                 productDetails={ productDetails }
+                history={ history }
               />
             </div>
             <div className="py-4">

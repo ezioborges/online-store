@@ -50,11 +50,13 @@ export default class ProductsCard extends Component {
               title={ singleProduct.title }
               id="t-1"
             >
-              <h6
+              <div
                 style={ { overflow: 'hidden', height: '40px' } }
               >
-                { singleProduct.title }
-              </h6>
+                <strong>
+                  { singleProduct.title }
+                </strong>
+              </div>
             </this.DescriptionProduct>
           </div>
 
