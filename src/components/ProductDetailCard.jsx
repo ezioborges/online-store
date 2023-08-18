@@ -6,7 +6,7 @@ import ProductQuantity from './ProductQuantity';
 
 export default class ProductDetailCard extends Component {
   render() {
-    const { productDetails } = this.props;
+    const { productDetails, history } = this.props;
     const { title, price, pictures } = productDetails;
     return (
       <>
@@ -30,7 +30,10 @@ export default class ProductDetailCard extends Component {
           </div>
         </div>
         <div>
-          <ProductQuantity productDetails={ productDetails } />
+          <ProductQuantity
+            productDetails={ productDetails }
+            history={ history }
+          />
         </div>
       </>
     );

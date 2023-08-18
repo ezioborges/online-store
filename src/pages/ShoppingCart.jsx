@@ -145,6 +145,14 @@ export default class ShoppingCart extends React.Component {
             <Link to="/">
               <button type="button" className="btn btn-primary">Tela inicial</button>
             </Link>
+            <Link to="/checkout">
+              <button
+                type="button"
+                className="btn btn-primary ms-2"
+              >
+                Finalizar compra
+              </button>
+            </Link>
           </div>
         </div>
       </div>
